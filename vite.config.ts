@@ -1,13 +1,12 @@
-import { fileURLToPath, URL } from 'node:url'
-
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-  base: '/projeto_integrador_tecsus_frontend/',
+  base: '',
   build: {
     outDir: 'dist',
-    target: 'esnext', 
+    target: 'esnext',
     rollupOptions: {
       output: {
         entryFileNames: 'assets/[name]-[hash].js',
@@ -17,11 +16,11 @@ export default defineConfig({
     }
   },
   esbuild: {
-    target: 'esnext', 
+    target: 'esnext',
   },
   plugins: [vue()],
   server: {
-    port:5173
+    port: 5173
   },
   resolve: {
     alias: {
@@ -29,9 +28,12 @@ export default defineConfig({
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
+  define: {
+    'process.env': {}, // Define a void polyfill for process.env
+  },
   test: {
     globals: true,
     environment: 'jsdom',
     setupFiles: './cypress/support/component.ts',
   }
-})
+});

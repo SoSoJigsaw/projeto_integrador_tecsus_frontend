@@ -1,12 +1,12 @@
-import { createStore } from 'vuex';
+import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    isProcessing: false,
+    isProcessing: false
   },
   mutations: {
     setProcessing(state, status) {
-      state.isProcessing = status;
-    },
-  },
-});
+      state.isProcessing = status
+    }
+  }
+})
